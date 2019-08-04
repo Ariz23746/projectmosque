@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p style = "color:white">
+{% if error %}
+{{ error }}
+<br />
+<br />
+{% endif %}
+
+<h1 style="color: #92B7C8">Sign Up!</h1>
+
+
+
+<form method="POST" action="{% url 'signup' %}" style="color: #92B7C8">
+{% csrf_token %}
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Username</label>
+      <input type="text" class="form-control" id="inputEmail4" placeholder="username" name="username">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password">
+    </div>
+  </div>
+  
+  <div class="form-row">
+
+   <div class="form-group col-md-6">
+      <label for="inputPassword4">Confirm Password</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="confirmpassword">
+    </div>
+  </div>
+  
+  
+  
+    
+    <div class="form-row">
+  
+  <button type="submit" class="btn btn-primary">Sign up</button>
+</div>
+</form>
+{% load staticfiles %}
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p style = "color:white">
+{% if error %}
+{{ error }}
+</p>
+<br />
+<br />
+{% endif %}
+
+<h1 class="text-center pb-5" style="color: #18495F"><em>Add New Mosque</em></h1>
+
+
+
+
+
+<form method="POST" action="{% url 'addmosque' %}" style="color: white" encytpe="multipart/form-data">
+{% csrf_token %}
+<div class="form-row">
+    <div class="form-group col-md-4 pr-5">
+      <label for="inputEmail4">Image</label>
+      <input type="file" name="image" >
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputPassword4">Mosque Name</label>
+      <input type="text" class="form-control" placeholder="Mosque Name" name="mosquename">
+    </div>
+  </div>
+  <div class="form-group">
+  	<div class="form-group col-md-6">
+    <label for="inputAddress">Address</label>
+    <input type="textbox" class="form-control" id="inputAddress" placeholder="address" name="address">
+</div>
+  </div>
+  <div class="form-group pr-5">
+  	<div class="form-group col-md-4">
+    <label for="inputEmail4">Auqat-e-Salah</label>
+    <input type="file" name="mosqueBanner">
+  </div>
+</div>
+
+<div class="row">
+
+    <div class="form-group col-md-4">
+    <label for="inputEmail4">Fajr</label>
+    <input type="time" name="fajr">
+  </div>
+
+    <div class="form-group col-md-4">
+    
+    <label for="inputEmail4">zuhar</label>
+    <input type="time" name="zuhar">
+  </div>
+
+<div class="form-group col-md-4">
+    <label for="inputEmail4">Asar</label>
+    <input type="time" name="asar">
+  </div>
+
+<div class="form-group col-md-4">
+    <label for="inputEmail4">maghrib</label>
+    <input type="time" name="maghrib">
+  </div>
+
+<div class="form-group col-md-4">
+    <label for="inputEmail4">isha</label>
+    <input type="time" name="isha">
+  </div>
+
+</div>
+
+
+
+
+  
+    
+  
+  <div class="form-group col-md-4 text-center">
+  <button type="submit" class="btn btn-primary">ADD</button>
+</div>
+</form>
+
+
+
+
+
+{% load staticfiles %}
+
+
+{% endblock %}

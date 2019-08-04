@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+		<h1 class="text-center pb-5" style = "color:#FFFFFF"><u>{{ details.MosqueName }}</u></h1>
+
+
+
+
+<div class="row" style="color:white">
+
+	<div class="col-4">
+
+         
+
+		<img src="{{ details.image.url }}" class="img-fluid pt-5">
+		<p class="p"> {{ details.address }} </p>
+
+	</div>
+
+	<div class="col-8 pr-20">
+		<h1 class= "text-center"> Auqaat-E-Salah </h1>
+		<img src="{{ details.mosqueTime.url }}" class="img-fluid pb-5">
+
+
+	</div>
+
+
+</div>
+
+<div class="row" >
+
+	<div class="col-4">
+		
+</div>
+
+
+{% endblock %}

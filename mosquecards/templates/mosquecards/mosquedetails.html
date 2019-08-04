@@ -1,0 +1,330 @@
+
+
+<!doctype html>
+<html lang="en">
+    
+  <head>
+      {% load staticfiles %}
+    
+    <meta charset="utf-8">
+      
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+      
+      <title>  السلام عليكم  |  salah timing</title>
+  
+    </head>
+    
+    <style type="text/css">
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    
+        body {
+			background:url("{% static 'newmosque2.jpg' %}") no-repeat center center;
+        	height:1500px;
+        	width:100%;
+        	background-size: cover; 
+        	margin:0 auto;
+           
+            
+            position:relative;
+            font-family: helvatica,sans-serif;
+            
+            
+        }
+        
+     
+        
+           .jumbotron {
+            
+            
+                    margin-bottom: 0px;
+                    height: 400px;
+                    color: aliceblue;
+                    text-shadow: black 0 0.1em 0.1em;
+                    background: transparent;
+                   
+                   
+            
+                }
+        
+               
+              
+
+            .background {
+
+              background-color:#868E96
+            }
+
+            #sizeofimage {
+
+                width: 100%;
+                height: 15vw;
+                object-fit: cover;
+
+
+            }
+
+          .time-salah{
+            color:white;
+            font-size:20px;
+          }
+           
+        
+        
+      
+        
+       
+        
+        #navbaropacity {
+            
+            opacity: 0.8;
+            
+        }
+
+        #map {
+
+                width:300px;
+                height:200px;
+
+
+
+        }
+    
+       
+        
+       
+        
+       
+        
+    </style>
+  
+    <body onload=display_ct()>
+        
+         
+           <nav class="navbar navbar-expand-lg navbar-light fixed-top " style = "background-color:#F8F9FA" id="navbaropacity">
+          <a class="navbar-brand" href="{% url 'home' %}"><img class="fluid-image" src="{% static 'ALLAH.png'%}" height="30px" width="40px">(Home)</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+         
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     <form action="{% url 'search' %}" method='GET' class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name='q'>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
+      </li>
+
+       <li class="nav-item">
+       <span class="nav-link" id="ct" ></span>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'aboutus' %}">About us</a>
+      </li>
+
+      </li>
+      
+       {% if user.is_authenticated %}
+      
+      
+      <li class="nav-item">
+        <form action="{% url 'signout' %}" id="logout" method="POST">
+          {% csrf_token %}
+
+        <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}" onclick="">logout</a>
+      </form>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'addmosque' %}">Add Mosque</a>
+      </li>
+
+
+    
+     {% else %}
+
+     <li class="nav-item">
+        <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">login</a>
+      </li>
+
+</ul>
+
+    {% endif %}
+   
+      
+  </div>
+</nav>
+        
+        <div class="bg">
+       
+   
+  
+       
+        
+        
+          
+        
+        <h3 class=text-center style="color:white">Salah-Timings</h3>     
+        
+        
+
+        
+
+        	<h1 class="text-center pb-5" style = "color:#FFFFFF"><u>{{ details.MosqueName }}</u></h1>
+
+
+
+
+<div class="row" style="color:white">
+
+	<div class="col-4">
+
+
+<table class="time-salah">
+  <thead>
+    <tr>
+      
+      <th scope="col" class="pr-3">Salah-Name</th>
+      <th scope="col">Time</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      <td>Fajr</td>
+      <td>{{ details.fajr }}</td>
+    </tr>
+    <tr>
+      
+      <td>Zuhar</td>
+      <td>{{ details.zuhar }}</td>
+    </tr>
+    <tr>
+     
+      <td>Asar</td>
+      <td>{{ details.asar }}</td>
+     
+    </tr>
+    <tr>
+      
+      <td>Maghrib</td>
+      <td>{{ details.maghrib }}</td>
+     
+    </tr>
+
+    <tr>
+      
+      <td>Isha</td>
+      <td>{{ details.isha }}</td>
+     
+    </tr>
+  </tbody>
+</table>
+	</div>
+
+	<div class="col-4">
+
+         
+
+		<a href="/Users/ariz/Desktop/project-mosque/media/images/images/IMG_0855.jpg"><img src="{{ details.image.url }}" class="img-fluid pt-5"></a>
+		<p class="p"> {{ details.address }} </p>
+
+	</div>
+
+	<div class="col-8 pr-20">
+		<h1 class= "text-center"> Auqaat-E-Salah </h1>
+		<img src="{{ details.mosqueBanner.url }}" class="img-fluid pb-5">
+
+
+	</div>
+
+
+</div>
+
+
+<div class="row" >
+
+	
+
+
+       
+        </div>
+        <br>
+        <footer>
+  
+      
+   <p class="text-center" style="color:#FFFFFF"> © Mohammad Ariz Khan {% now "Y" %} </p>
+    
+  </div>
+</footer>
+</div>
+        
+      
+            
+        
+          
+            
+            
+           
+              
+          
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+        
+        <script src ="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script> 
+
+    <script type="text/javascript">
+
+     function display_c(){
+          var refresh=1000; // Refresh rate in milli seconds
+          mytime=setTimeout('display_ct()',refresh)
+          }
+
+          function display_ct() {
+          var x = new Date()
+          document.getElementById('ct').innerHTML = x;
+          display_c();
+           }
+    </script>
+         
+
+         
+   
+    </body>
+
+</html>
+
+		
+

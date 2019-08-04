@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load staticfiles %}
+
+  
+
+<div class="row">
+
+
+
+	{% for card in cards.all %}
+	{% if card.ispublished == True %}
+
+	
+	 <div class="col-md-4">
+	    <div class="card-deck">
+		
+	  		<div class="card mt-3" style="width: 300px">
+	  			 
+	    		<a href="{% url 'mosquedetails' card.id %}"><img src="{{ card.image.url }}" class="card-img-top img-fluid" id="sizeofimage" /></a>
+	    		
+	    		<div class="card-body" style = "background-color: #92B7C8">
+	      			<h5 class="card-title">{{ card.MosqueName }}</h5>
+	      			<p class="card-text">{{ card.ShortAddress }}</p>
+	     
+	    		</div>
+	  		</div>
+
+	    </div>
+
+	    
+	</div>
+	<br>
+	<br>
+
+	{% endif %}
+   {% endfor %}
+
+
+
+</div>
+
+
+{% endblock %}
