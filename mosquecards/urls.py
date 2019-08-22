@@ -8,14 +8,15 @@ urlpatterns = [
     path('mosquedetails', views.addmosquedetails, name='addmosquedetails'),
     path('addnewmosque', views.addmosque , name='addmosque'),
     path('aboutus', views.aboutus, name='aboutus'),
-    path('search', views.search, name='search')
-    
-   	
-    
-    
+    path('search', views.search, name='search'),
 
 
-   
-  
-   	
+
+
+
+
+
+
+
+
 ]
