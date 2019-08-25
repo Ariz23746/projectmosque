@@ -67,48 +67,13 @@
           }
 
           /* ---------------------- */
-          .signupSection {
-           
-            background-repeat: no-repeat;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 450px;
-            text-align: center;
-            display: flex;
-            color: white;
-            box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, 0.5);
-          }
-
-          .info {
-            width: 45%;
-            background: rgba(20, 20, 20, 0.8);
-            padding: 30px 0;
-            border-right: 5px solid rgba(30, 30, 30, 0.8);
-          }
-          .info h2 {
-            padding-top: 30px;
-            font-weight: 300;
-          }
-          .info p {
-            font-size: 18px;
-          }
-          .info .icon {
-            font-size: 8em;
-            padding: 20px 0;
-            color: #0ab4b4;
-          }
-
+          
           .signupForm {
+            margin-left: 150px;
             width: 70%;
             padding: 30px 0;
             background: rgba(20, 40, 40, 0.8);
             transition: .2s;
-          }
-          .signupForm h2 {
-            font-weight: 300;
           }
 
           .inputFields {
@@ -130,20 +95,6 @@
             padding: 0;
           }
 
-          #join-btn {
-            border: 1px solid #0ab4b4;
-            background: rgba(20, 20, 20, 0.6);
-            font-size: 18px;
-            color: white;
-            margin-top: 20px;
-            padding: 10px 50px;
-            cursor: pointer;
-            transition: .4s;
-          }
-          #join-btn:hover {
-            background: rgba(20, 20, 20, 0.8);
-            padding: 10px 80px;
-          }
 
           /* ---------------------- */
 
@@ -214,18 +165,10 @@
   </div>
 </nav>
 
-<div class="container">
+<div class="container" style="margin-top:100px;">
 
 
-<p style = "color:white">
-{% if error %}
-{{ error }}
-</p>
-<br />
-<br />
-{% endif %}
 
-<h1 class="text-center pb-5" style="color: #18495F"><em>Add New Mosque</em></h1>
 
 
 
@@ -235,6 +178,11 @@
 {% csrf_token %}
 
       <div class="container">
+          <p style = "color:red">
+              {% if error %}
+              {{ error }}
+              </p>
+              {% endif %}
       <ul class="noBullet">
         <h4 style="text-align: center">مسجد شامل کریں(Add Mosque)</h4>
           <label style="padding-left: 15px;"> Mosque image: </label>

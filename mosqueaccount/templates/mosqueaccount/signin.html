@@ -1,44 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<p style = "color:white">
-{% if error %}
-{{ error }}
-<br />
-<br />
-{% endif %}
-
-<h1 style="color: #92B7C8">Sign In!</h1>
+<div class="container" style="align-content: center;">
 
 
 
-<form method="POST" action="{% url 'login' %}" style="color: #92B7C8">
+<form method="POST" class="signupForm" action="{% url 'login' %}" style="color: white">
+    <div class="container">
+        <h1 class="text-center pb-5" style="color: white">Sign in</h1>
+        <p style = "color:red">
+            {% if error %}
+            {{ error }}
+            {% endif %}
+            </p>
 {% csrf_token %}
-
-  <div class="form-row">
-    <div class="form-group col-md-6">
+    <ul class="noBullet">
+      <li>
       <label for="inputEmail4">Username</label>
-      <input type="text" class="form-control" id="inputEmail4" placeholder="username" name="username">
-    </div>
-  </div>
-     <div class="form-row">
-    <div class="form-group col-md-6">
+      <input style="margin-left: 20px;" type="text" class="inputFields" id="inputEmail4" placeholder="username" name="username">
+      </li>
+ 
+    <li>
       <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password">
-    </div>
-  </div>
-
-  
-  
-  
-  
-  
-    
-    <div class="form-row">
-  
-  <button type="submit" class="btn btn-primary">log in</button>
+      <input style="margin-left: 20px;" type="password" class="inputFields" id="inputPassword4" placeholder="Password" name="password">
+   </li>
+  <button type="submit" class="btn btn-outline-secondary">log in</button>
 </div>
+</ul>
 </form>
+</div>
 {% load staticfiles %}
 
 {% endblock %}
