@@ -59,7 +59,8 @@ def search(request):
             queryset_list = queryset_list.filter(Q(MosqueName__icontains=q) | Q(address__icontains=q))
 
     dict = {
-    'mosquecards_models':queryset_list
+    'mosquecards_models':queryset_list,
+	'error':'No such Mosque Exist'
     }
     return render(request, 'mosquecards/search.html', dict)
 
