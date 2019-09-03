@@ -89,12 +89,6 @@
             font-size:20px;
           }
 
-
-
-
-
-
-
         #navbaropacity {
             opacity: 1;
             
@@ -105,6 +99,7 @@
                 width:300px;
                 height:200px;
         }
+
         .caroussselimage {
           display: block;
           margin-left: auto;
@@ -144,12 +139,11 @@
 
        <li class="nav-item">
        <span class="nav-link" style="color: white" id="txt" ></span> 
+      </li>
        
-       <li class="nav-item">
-        <a class="nav-link" style="color: white" href="{% url 'aboutus' %}">About us</a>
-      </li>
+    
 
-      </li>
+      
 
        {% if user.is_authenticated %}
 

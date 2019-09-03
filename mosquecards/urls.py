@@ -9,6 +9,7 @@ urlpatterns = [
     path('addnewmosque', views.addmosque , name='addmosque'),
     path('aboutus', views.aboutus, name='aboutus'),
     path('search', views.search, name='search'),
+    path('contactus', views.contactus, name='contactus'),
 
 
 

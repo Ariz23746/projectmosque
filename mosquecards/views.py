@@ -64,4 +64,5 @@ def search(request):
     }
     return render(request, 'mosquecards/search.html', dict)
 
-# Create your views here.
+def contactus(request):
+	return render(request, 'mosquecards/contactus.html')
